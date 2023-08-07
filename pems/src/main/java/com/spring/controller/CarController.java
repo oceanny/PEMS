@@ -1,7 +1,10 @@
 package com.spring.controller;
 
-import javax.annotation.Resource;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.josephoconnell.html.HTMLInputFilter;
+import com.spring.command.SearchListCommand;
 import com.spring.dto.CarVO;
 import com.spring.service.CarService;
 
@@ -18,15 +22,17 @@ import com.spring.service.CarService;
 @RequestMapping("/umypage")
 public class CarController {
 	
-	@Resource(name = "carService")
+	@Autowired
 	private CarService carService;
 	
 	@GetMapping("/mypage")
 	public void main() {}
 	
 	@GetMapping("/mycarinfo")
-	public String list() throws Exception {
+	public String list(SearchListCommand command, HttpServletRequest request) throws Exception {
 		String url = "/carinfo/list";
+		Map<String,Object> dataMap = carService.getCarList(command);
+		request.setAttribute("dataMap", dataMap);
 		return url;
 	}
 	

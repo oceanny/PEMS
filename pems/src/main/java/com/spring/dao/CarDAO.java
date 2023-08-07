@@ -11,7 +11,7 @@ public interface CarDAO {
 	List<CarVO> selectCarList();
 	List<CarVO> selectCarList(SearchListCommand command) throws SQLException;
 	
-	public int selectSearchCarListCount(SearchListCommand command) throws SQLException;
+//	public int selectSearchCarListCount(SearchListCommand command) throws SQLException;
 	
 	CarVO selectCarByCarNum(String carNum) throws SQLException;
 	

@@ -28,31 +28,33 @@ public class CarDAOImpl implements CarDAO {
 		dataParam.put("searchType", command.getSearchType());
 		dataParam.put("keyword", command.getKeyword());
 
-		List<CarVO> carList = sqlSession.selectList("CarInfo-Mapper.selectSearchCarList", dataParam);
+		List<CarVO> carList = sqlSession.selectList("Car-Mapper.selectSearchCarList", dataParam);
 		return carList;
 	}
-	@Override
-	public int selectSearchCarListCount(SearchListCommand command) throws SQLException {
-		int count = sqlSession.selectOne("CarInfo-Mapper.selectSearchCarListCount", command);
-		return count;
-	}
+	
+//	@Override
+//	public int selectSearchCarListCount(SearchListCommand command) throws SQLException {
+//		int count = sqlSession.selectOne("CarInfo-Mapper.selectSearchCarListCount", command);
+//		return count;
+//	}
+	
 	@Override
 	public CarVO selectCarByCarNum(String carNum) throws SQLException {
-		CarVO car = sqlSession.selectOne("CarInfo-Mapper.selectCarById", carNum);
+		CarVO car = sqlSession.selectOne("Car-Mapper.selectCarById", carNum);
 		return car;
 	}
 	@Override
 	public void insertCar(CarVO car) throws SQLException {
-		sqlSession.insert("CarInfo-Mapper.insertCar", car);
+		sqlSession.insert("Car-Mapper.insertCar", car);
 	}
 	@Override
 	public void updateCar(CarVO car) throws SQLException {
-		sqlSession.update("CarInfo-Mapper.updateCar", car);
+		sqlSession.update("Car-Mapper.updateCar", car);
 		
 	}
 	@Override
 	public void deleteCar(String carNum) throws SQLException {
-		sqlSession.delete("CarInfo-Mapper.deleteCar", carNum);
+		sqlSession.delete("Car-Mapper.deleteCar", carNum);
 	}
 
 	@Override

@@ -13,7 +13,7 @@ import com.spring.dto.CarVO;
 public class CarServiceImpl implements CarService {
 	
 	private CarDAO carDAO;
-	public void setCarInfoDAO(CarDAO carDAO) {
+	public void setCarDAO(CarDAO carDAO) {
 		this.carDAO = carDAO;
 	}
 	
@@ -27,15 +27,8 @@ public class CarServiceImpl implements CarService {
 	public Map<String, Object> getCarList(SearchListCommand command) throws SQLException {
 		List<CarVO> carList = carDAO.selectCarList(command);
 		
-		int totalCount = carDAO.selectSearchCarListCount(command);
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCommand(command);
-		pageMaker.setTotalCount(totalCount);
-		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("carList", carList);
-		dataMap.put("pageMaker", pageMaker);
 		
 		return dataMap;
 	}

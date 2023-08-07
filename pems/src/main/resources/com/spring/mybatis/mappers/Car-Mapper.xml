@@ -4,10 +4,25 @@
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Car-Mapper">
 	
+	<sql id="search">
+		<if test="searchType == 'c'.toString()">
+			and carnum like '%'||#{keyword}||'%'			
+		</if>
+	</sql>
+	
 	<select id="selectCarList" resultType="car">
 		select *
 		from carinfo
 		order by carnum asc
+	</select>
+	
+	<select id="selectSearchCarList" resultType="car">
+		select
+		*
+		from carinfo
+		where carnum is not null
+		<include refid="search" />
+		order by carnum asc							    
 	</select>
 	
 	<select id="selectCarByCarNum" parameterType="str" resultType="car">
