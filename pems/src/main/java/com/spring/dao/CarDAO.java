@@ -5,13 +5,14 @@ import java.util.List;
 
 import com.spring.command.SearchListCommand;
 import com.spring.dto.CarVO;
+import com.spring.dto.UserVO;
 
 public interface CarDAO {
 
-	List<CarVO> selectCarList();
-	List<CarVO> selectCarList(SearchListCommand command) throws SQLException;
+	List<CarVO> selectSearchCarList(SearchListCommand command) throws SQLException;
+	List<CarVO> selectUserCarList(SearchListCommand command) throws SQLException;
 	
-//	public int selectSearchCarListCount(SearchListCommand command) throws SQLException;
+	List<String> selectCarNumById(UserVO user) throws SQLException;
 	
 	CarVO selectCarByCarNum(String carNum) throws SQLException;
 	
@@ -20,4 +21,6 @@ public interface CarDAO {
 	void updateCar(CarVO car) throws SQLException;
 	
 	void deleteCar(String carNum) throws SQLException;
+
+	int selectSearchCarListCount(SearchListCommand command);
 }

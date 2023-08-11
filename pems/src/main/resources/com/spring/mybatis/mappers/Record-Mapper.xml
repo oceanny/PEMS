@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Record-Mapper">
+	
+	<sql id="search">
+		<if test="searchType == 'c'.toString()">
+			and carnum like '%'||#{keyword}||'%'			
+		</if>
+	</sql>
+	
+	<select id="selectSearchRecordList" resultType="record">
+		select
+		*
+		from parkrecord
+		where recordnum is not null
+		<include refid="search" />
+		order by recordnum desc
+	</select>
+	
+	<select id="selectNowAreaNum" resultType="str">
+		select areanum
+		from parkrecord
+		where outdate is null AND carnum=#{carnum}
+	</select>
+	
+</mapper>
