@@ -31,7 +31,7 @@ public class CarController {
 	@GetMapping("/mycarinfo")
 	public String list(SearchListCommand command, HttpServletRequest request) throws Exception {
 		String url = "/carinfo/list";
-		Map<String,Object> dataMap = carService.getCarList(command);
+		Map<String,Object> dataMap = carService.getUserCarList(command);
 		request.setAttribute("dataMap", dataMap);
 		return url;
 	}
@@ -53,7 +53,7 @@ public class CarController {
 		car.setPreSeat(car.getPreSeat());
 		car.setTreatInfo2(car.getTreatInfo2());
 		car.setTreatInfo3(car.getTreatInfo3());
-		car.setUserId(car.getUserId());
+		car.setCarId(car.getCarId());
 		
 		carService.regist(car);
 		
@@ -72,7 +72,7 @@ public class CarController {
 	
 	@PostMapping(value = "/modify", produces = "text/plain;charset=utf-8")
 	public ModelAndView modify(CarVO car, ModelAndView mnv) throws Exception {
-		String url = "redirect:/carinfo/list.do?userid=" + car.getUserId();
+		String url = "redirect:/carinfo/list.do?carid=" + car.getCarId();
 		car.setCarNum(HTMLInputFilter.htmlSpecialChars(car.getCarNum()));
 		carService.modify(car);
 		mnv.setViewName(url);

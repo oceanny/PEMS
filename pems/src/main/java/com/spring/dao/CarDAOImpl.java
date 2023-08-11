@@ -1,14 +1,14 @@
 package com.spring.dao;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.spring.command.SearchListCommand;
 import com.spring.dto.CarVO;
+import com.spring.dto.UserVO;
 
 public class CarDAOImpl implements CarDAO {
 	
@@ -18,29 +18,29 @@ public class CarDAOImpl implements CarDAO {
 	}
 	
 	@Override
-	public List<CarVO> selectCarList(SearchListCommand command) throws SQLException {
-		int startRow = command.getStartRowNum();
-		int endRow = startRow + command.getPerPageNum();
+	public List<CarVO> selectSearchCarList(SearchListCommand command) throws SQLException {
+		int offset = command.getStartRowNum();
+		int limit = command.getPerPageNum();		
+		RowBounds rowBounds = new RowBounds(offset,limit);		
 		
-		Map<String, Object> dataParam = new HashMap<String, Object>();
-		dataParam.put("startRow", startRow);
-		dataParam.put("endRow", endRow);
-		dataParam.put("searchType", command.getSearchType());
-		dataParam.put("keyword", command.getKeyword());
-
-		List<CarVO> carList = sqlSession.selectList("Car-Mapper.selectSearchCarList", dataParam);
+		List<CarVO> carList = sqlSession.selectList("Car-Mapper.selectSearchCarList", command, rowBounds);
 		return carList;
 	}
-	
-//	@Override
-//	public int selectSearchCarListCount(SearchListCommand command) throws SQLException {
-//		int count = sqlSession.selectOne("CarInfo-Mapper.selectSearchCarListCount", command);
-//		return count;
-//	}
-	
+
+	@Override
+	public List<CarVO> selectUserCarList(SearchListCommand command) throws SQLException {
+		List<CarVO> carList = sqlSession.selectList("Car-Mapper.selectUserCarList", command);
+		return carList;
+	}
+
+	@Override
+	public List<String> selectCarNumById(UserVO user) throws SQLException {
+		List<String> carList = sqlSession.selectList("Car-Mapper.selectCarNumById", user.getUserId());
+		return carList;
+	}
 	@Override
 	public CarVO selectCarByCarNum(String carNum) throws SQLException {
-		CarVO car = sqlSession.selectOne("Car-Mapper.selectCarById", carNum);
+		CarVO car = sqlSession.selectOne("Car-Mapper.selectCarByCarNum", carNum);
 		return car;
 	}
 	@Override
@@ -58,9 +58,12 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	@Override
-	public List<CarVO> selectCarList() {
-		return null;
+	public int selectSearchCarListCount(SearchListCommand command) {
+		int count = sqlSession.selectOne("Car-Mapper.selectSearchCarListCount",command);
+		return count;
 	}
-	
+
+
+
 
 }
