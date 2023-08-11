@@ -1,27 +1,37 @@
 package com.spring.dto;
 
+import java.util.List;
+
 public class CarVO {
 	
 	String carNum;
-	String userId;
+	String carId;
 	int treatInfo1;
 	int lotColor;
 	int cTypeNum;
-	String preSeat;
 	int treatInfo2;
 	int treatInfo3;
+	String preSeat;
 	
+	List<UserVO> userList;
+	
+	public List<UserVO> getUserList() {
+		return userList;
+	}
+	public void setUserList(List<UserVO> userList) {
+		this.userList = userList;
+	}
 	public String getCarNum() {
 		return carNum;
 	}
 	public void setCarNum(String carNum) {
 		this.carNum = carNum;
 	}
-	public String getUserId() {
-		return userId;
+	public String getCarId() {
+		return carId;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setCarId(String carId) {
+		this.carId = carId;
 	}
 	public int getTreatInfo1() {
 		return treatInfo1;
