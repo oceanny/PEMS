@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<typeAliases>
+	<typeAlias type="java.lang.String" alias="str" />
+	<typeAlias type="java.lang.Integer" alias="int" />
+	
+	<typeAlias type="com.spring.command.SearchListCommand" alias="searchCommand"/>
+	
+	<typeAlias type="com.spring.dto.MenuVO" alias="menu"/>
+	<typeAlias type="com.spring.dto.CCTVVO" alias="cctv"/>
+	<typeAlias type="com.spring.dto.CarVO" alias="car"/>
+	<typeAlias type="com.spring.dto.UserVO" alias="user"/>
+	<typeAlias type="com.spring.dto.RecordVO" alias="record"/>
+
+</typeAliases>
+
+</configuration>
+
+
+
+
