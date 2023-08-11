@@ -10,12 +10,6 @@
 		</if>
 	</sql>
 	
-	<select id="selectCarList" resultType="car">
-		select *
-		from carinfo
-		order by carnum asc
-	</select>
-	
 	<select id="selectSearchCarList" resultType="car">
 		select
 		*
@@ -25,10 +19,35 @@
 		order by carnum asc							    
 	</select>
 	
-	<select id="selectCarByCarNum" parameterType="str" resultType="car">
+	<select id="selectUserCarList" resultType="car">
+		select
+		*
+		from carinfo
+		where carnum is not null AND userid=#{userid}
+		<include refid="search" />
+		order by carnum asc
+	</select>
+	
+	<select id="selectSearchCarListCount" resultType="int">
+		select
+		count(*)
+		from
+		carinfo
+		where carnum is not null  			  	
+		<include refid="search" />
+		order by carnum asc
+	</select>
+	
+	<select id="selectCarByCarNum" resultType="car">
 		select * 
 		from carinfo
 		where carnum=#{carnum}
+	</select>
+	
+	<select id="selectCarNumById" resultType="str">
+		select carnum
+		from carinfo
+		where carnum is not null AND userid=#{userid}
 	</select>
 	
 	<update id="insertCar" parameterType="car">
