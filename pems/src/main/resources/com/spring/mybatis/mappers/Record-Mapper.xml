@@ -25,4 +25,10 @@
 		where outdate is null AND carnum=#{carnum}
 	</select>
 	
+	<select id="selectRecordByNum" resultType="record">
+		select *
+		from parkrecord
+		where recordnum is not null AND recordnum=#{recordnum}
+	</select>
+	
 </mapper>

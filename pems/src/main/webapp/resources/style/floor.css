@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+body {
+	margin:10px ;
+	padding:0px;
+}
+
+.center-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.parking-seats {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0px;
+	text-align: center;
+	flex-direction: row;
+	
+	margin-top: 20px;
+	width: 600px;
+	height: 180px;
+	background-color: #D8D9DA;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.list-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0px 15px;
+}
+
+.seat-title {
+	font-size: 14pt;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.seat-list {
+	margin: 0px 10px;
+}
+
+.seat-list-1{
+	vertical-align: middle;
+	background-color: #FF9B9B;
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+}
+
+.seat-list-2{
+	background-color: #FFD6A5;
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+}
+
+.seat-list-3{
+	background-color: #CBFFA9;
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+}
+
+.seat-text{
+	font-size: 10pt;
+}
+
+.assign{
+	border: none;
+	text-align: center;
+	width: 30px;
+	height: 20px;
+}
+
+.floor-info {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.parking-container {
+    align-items: center;
+    margin-left: 20px;
+}
+
+.custom-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.parking-map {
+	width: 800px;
+	height: 500px;
+	font-size: 8pt;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	background-color: #D8D9DA;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+	overflow: hidden;
+	flex-grow: 1;
+}
+tr {
+	height:50px;
+	padding:0px;
+}
+
+tr#even {
+	border-right:none;
+}
+
+td {
+	padding:0px;
+}
+
+td#blank {
+	border-right:none;
+}
+
+button {
+	font-size: 7pt;
+	padding:0px;
+	border:0.5px;
+	height:50px;
+	width:25px;
+	overflow: hidden;
+}

@@ -10,4 +10,5 @@ public interface RecordDAO {
 
 	List<RecordVO> selectSearchRecordList(SearchListCommand command) throws SQLException;
 	String selectNowAreaNum(String carNum) throws SQLException;
+	RecordVO selectRecordByNum(String recordNum) throws SQLException;
 }

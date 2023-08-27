@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+select{
+	border:2px solid #A076F9;
+	background-color:#EDE4FF;
+}
+
+.car{
+	width:15%;
+	background-color:#94ADD7;
+}
+#path{
+	width:8%;
+}
+#time{
+	width:50px;
+}
+#timeSet{
+	padding-right:0px;
+	padding-left:0px;
+}
+
+input[type=checkbox] + label{
+	display:inline-block;
+	width:100px;
+	height:25%;
+	border:2px solid #A076F9;
+	cursor:pointer;
+	text-align:center;
+}
+
+input[type=checkbox]:checked + label{
+	background-color:#D7BBF5;
+	text-align:center;
+}
+
+input[type=checkbox]{
+	display: none;	
+}
+
+input[type=number]{
+	border:2px solid #7C73C0;
+	background-color:#F5F5F5;
+	width:60px;
+	height:25px;
+}
+
+button#submit{
+	background-color:#CEE6F3;
+	border:1px solid #A1CCD1;
+	width:60px;
+	height:25px;
+	border-radius:5px;
+}
