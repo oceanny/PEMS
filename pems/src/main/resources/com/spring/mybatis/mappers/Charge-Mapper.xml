@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Charge-Mapper">
+	
+	<sql id="search">
+		<if test="searchType == 'ch'.toString()">
+			and charnum like '%'||#{keyword}||'%'			
+		</if>
+	</sql>
+	
+	<select id="selectSearchCharRecordList" resultType="charge">
+		select
+		*
+		from charrecord
+		where charrecordnum is not null
+		<include refid="search" />
+		order by charrecordnum desc
+	</select>
+	
+	<select id="selectSearchCharRecordListCount" resultType="int">
+		select
+		count(*)
+		from
+		charrecord
+		where charrecordnum is not null  			  	
+		<include refid="search" />
+		order by charrecordnum desc
+	</select>
+	
+	<select id="selectUsingChar" resultType="charge">
+		select *
+		from charrecord
+		where charfin = 1 and charrecordnum is not null
+		<include refid="search" />
+		order by charnum asc
+	</select>
+	
+	<select id="selectChargerByCharNum"  resultType="charge">
+		select *
+		from electchar 
+		where charNum=#{charNum}
+	</select>
+	
+	<update id="reserveCharger" parameterType="charge">
+		insert 
+		into 
+		charrecord(charrecordnum,carnum,charnum,chartime)
+		values
+		(#{charrecordnum},#{carnum},#{charnum},#{chartime})
+	</update>
+	
+	<update id="updateCharger" parameterType="charge">
+		update 
+		charrecord
+		set
+		charFin=#{charFin}
+		where charRecordNum=#{charRecordNum}
+	</update>
+	
+</mapper>

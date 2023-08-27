@@ -50,6 +50,12 @@
 		where carnum is not null AND userid=#{userid}
 	</select>
 	
+	<select id="selectIdByCarNum" resultType="str">
+		select userid
+		from carinfo
+		where carnum is not null AND carnum=#{carnum}
+	</select>
+	
 	<update id="insertCar" parameterType="car">
 		insert 
 		into 

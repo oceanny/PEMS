@@ -16,6 +16,8 @@ public interface CarDAO {
 	
 	CarVO selectCarByCarNum(String carNum) throws SQLException;
 	
+	String selectIdByCarNum(String carNum) throws SQLException;
+	
 	void insertCar(CarVO car) throws SQLException;
 	
 	void updateCar(CarVO car) throws SQLException;

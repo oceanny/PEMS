@@ -30,9 +30,9 @@
 				<div id="keyword" class="card-tools" >
 					<div class="input-group row">
 						<select class="form-control col-md-4" name="searchType" id="searchType">
-							<option value="c" ${command.searchType eq 'c' ? 'selected':'' }>차량번호</option>
+							<option value="u" ${command.searchType eq 'u' ? 'selected':'' }>아이디</option>
 						</select>					
-						<input  class="form-control" type="text" name="keyword" placeholder="차량번호를 입력하세요." value="${command.keyword }"/>
+						<input  class="form-control" type="text" name="keyword" placeholder="아이디를 입력하세요." value="${command.keyword }"/>
 						<span class="input-group-append">
 							<button class="btn btn-primary" type="button" onclick="searchList_go(1);" data-card-widget="search">
 								<i class="fa fa-fw fa-search"></i>
@@ -75,7 +75,7 @@
 				</table>
 			</div>
 			<div class="card-footer">
-				<%@ include file="/WEB-INF/views/module/pagination.jsp" %>
+				<%@ include file="/WEB-INF/views/userinfo/pagination.jsp" %>
 			</div>
 		</div>
 	</section>

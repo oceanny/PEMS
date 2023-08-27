@@ -32,4 +32,10 @@ public class RecordDAOImpl implements RecordDAO {
 		return areaNum;
 	}
 
+	@Override
+	public RecordVO selectRecordByNum(String recordNum) throws SQLException {
+		RecordVO record = sqlSession.selectOne("Record-Mapper.selectRecordByNum", recordNum);
+		return record;
+	}
+
 }

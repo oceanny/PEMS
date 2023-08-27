@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ManageTarget-Mapper">
+	<select id="selectManageTargetList" resultType="managetarget">
+		select *
+		from managetarget
+	</select>
+	
+	<select id="selectManageTargetSection" resultType="managetarget">
+		select *
+		from managetarget
+	</select>
+
+	<select id="selectWorkynByManageType" resultType="managetarget">
+		select manageNum, workyn
+		from managetarget
+		where manageType=#{manageType}
+	</select>
+
+	<select id="updateWorkYnByManageNum" resultType="managetarget">
+		update managetarget
+		set workyn=#{workyn}
+		where manageNum=#{manageNum}
+	</select>
+	
+</mapper>

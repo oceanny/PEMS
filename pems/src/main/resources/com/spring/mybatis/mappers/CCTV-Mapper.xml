@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CCTV-Mapper">
+	<sql id="search">
+		<if test="searchType == '1A001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '1B001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '1C001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '1D001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '1E001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '1F001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '2A001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '2B001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '2C001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '2D001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '2F001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		<if test="searchType == '2E001'.toString()">
+			and cctvNum like '%'||#{searchType}||'%'
+		</if>
+		
+	</sql>
+	
+	<select id="selectSearchCCTVFileList" resultType="cctv">
+		select *
+		from cctvstorage
+		where cctvFileNum is not null
+		<include refid="search" />
+		order by cctvFileNum desc
+	</select>
+	
+	<select id="selectSearchCCTVFileListCount" resultType="int">
+		select count(*)
+		from cctvstorage
+		where cctvFileNum is not null
+		<include refid="search" />
+		order by cctvFileNum desc
+	</select>
+	
+	<select id="selectCCTVFileByCCTVFileNum" resultType="cctv">
+		select *
+		from cctvstorage
+		where cctvFileNum=#{cctvFileNum}
+	</select>
+	
+	<select id="selectCCTVSeqNext" resultType="int">
+		select cctvstorage_seq.nextval as cctvFileNum from dual
+	</select>
+	
+	<update id="insertCCTV" parameterType="cctv">
+		insert into 
+		cctvstorage(cctvFileNum, cctvFileName, cctvFilePath)
+		values(#{cctvFileNum}, #{cctvFileName}, #{cctvFilePath})
+	</update>
+	
+	<update id="updateMember" parameterType="cctv">
+		update cctvstorage 
+		set 
+		cctvFileName=#{cctvFileName}, cctvFilePath=#{cctvFilePath}
+		where cctvFileNum=#{cctvFileNum}
+	</update>
+	
+	<update id="deleteMember" parameterType="int" >
+		delete 
+		from member 
+		where cctvFileNum=#{cctvFileNum}		
+	</update>
+	
+	
+</mapper>
