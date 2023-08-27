@@ -5,8 +5,8 @@
 <mapper namespace="User-Mapper">
 	
 	<sql id="search">
-		<if test="searchType == 'c'.toString()">
-			and carnum like '%'||#{keyword}||'%'			
+		<if test="searchType == 'u'.toString()">
+			and userid like '%'||#{keyword}||'%'
 		</if>
 	</sql>
 	
@@ -24,8 +24,8 @@
 		count(*)
 		from
 		userinfo
-		where userid is not null  			  	
-		<include refid="search" />
+		where userid is not null
+		<include refid="search" />			  	
 		order by name asc
 	</select>
 	
@@ -33,7 +33,6 @@
 		select *
 		from userinfo
 		where userid=#{userid}
-		<include refid="search" />
 	</select>
 	
 	<update id="insertUser" parameterType="user">

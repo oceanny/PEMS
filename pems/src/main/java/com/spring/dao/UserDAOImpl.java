@@ -32,7 +32,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public int selectSearchUserListCount(SearchListCommand command) {
-		int count=sqlSession.selectOne("User-Mapper.selectSearchUserListCount",command);
+		int count = sqlSession.selectOne("User-Mapper.selectSearchUserListCount", command);
 		return count;
 	}
 	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin-Mapper">
+
+	<select id="selectAdminById" parameterType="str" resultType="admin">
+		select	*
+		from admin
+		where adminId=#{adminId}
+	</select>
+	<update id="insertAdmin" parameterType="admin">
+		insert into
+		member(adminId, adminPwd, email, name)
+		values(#{adminId},#{adminPwd},#{email},#{name})
+	</update>
+	<update id="updateAdmin" parameterType="admin">
+		update admin
+		set
+		adminPwd=#{adminPwd},mail=#{mail},name=#{name}
+		where adminId=#{adminId}
+	</update>
+
+	<update id="deleteAdmin" parameterType="str">
+		update admin
+		set 
+		joinState=0
+		where userId=#{userId}
+	</update>
+
+</mapper>

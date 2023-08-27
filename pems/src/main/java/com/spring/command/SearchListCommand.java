@@ -1,12 +1,12 @@
 package com.spring.command;
 
 public class SearchListCommand {
-	private int page = 1;
-	private int perPageNum = 10;
-	private String keyword = "";
-	private String searchType = "";
+	private int page=1;
+	private int perPageNum=10;
+	private String keyword="";
+	private String searchType="";
 	
-	private int startRowNum = 0;
+	private int startRowNum=0;
 	
 	public int getPage() {
 		return page;
@@ -34,12 +34,13 @@ public class SearchListCommand {
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
 	}
+	
+	private void setStartRowNum() {
+		this.startRowNum = (this.page-1)* this.perPageNum;	
+	}
+	
 	public int getStartRowNum() {
 		return this.startRowNum;
 	}
-	public void setStartRowNum() {
-		this.startRowNum = (this.page - 1) * this.perPageNum;
-	}
-	
 	
 }
