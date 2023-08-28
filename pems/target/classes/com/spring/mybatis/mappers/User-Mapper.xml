@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User-Mapper">
+	
+	<sql id="search">
+		<if test="searchType == 'u'.toString()">
+			and userid like '%'||#{keyword}||'%'
+		</if>
+	</sql>
+	
+	<select id="selectSearchUserList" resultType="user">
+		select
+		*
+		from userinfo
+		where userid is not null
+		<include refid="search" />
+		order by name asc						    
+	</select>
+	
+	<select id="selectSearchUserListCount" resultType="int">
+		select
+		count(*)
+		from
+		userinfo
+		where userid is not null
+		<include refid="search" />			  	
+		order by name asc
+	</select>
+	
+	<select id="selectUserById" resultType="user">
+		select *
+		from userinfo
+		where userid=#{userid}
+	</select>
+	
+	<update id="insertUser" parameterType="user">
+		insert 
+		into 
+		userinfo(userid,userpwd,name,phone,mail)
+		values
+		(#{userid},#{userpwd},#{name},#{phone},#{mail})
+	</update>
+	
+	<update id="updateUser" parameterType="user">
+		update 
+		userinfo
+		set
+		userpwd=#{userpwd}, phone=#{phone}, mail=#{mail}
+		where userid=#{userid}
+	</update>
+	
+	<update id="deleteUser" parameterType="str">
+		delete 
+		from userinfo
+		where userid=#{userid}
+	</update>
+
+</mapper>
