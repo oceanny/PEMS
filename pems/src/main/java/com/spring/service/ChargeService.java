@@ -14,7 +14,7 @@ public interface ChargeService {
 	Map<String, Object> getNowCharList(SearchListCommand command) throws SQLException;
 	
 	ChargeVO getCharger(String charNum) throws SQLException;
+	ChargeVO getUsingCar(String carNum) throws SQLException;
+	String getRecentRecordNum() throws Exception;
 	void reserve(ChargeVO charge) throws SQLException;
-	
-	int getUpdatedReservationCount(LocalDate reservationDate) throws Exception;
 }

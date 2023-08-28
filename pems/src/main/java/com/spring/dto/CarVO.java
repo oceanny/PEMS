@@ -5,7 +5,7 @@ import java.util.List;
 public class CarVO {
 	
 	String carNum;
-	String carId;
+	String userId;
 	int treatInfo1;
 	int lotColor;
 	int cTypeNum;
@@ -27,11 +27,11 @@ public class CarVO {
 	public void setCarNum(String carNum) {
 		this.carNum = carNum;
 	}
-	public String getCarId() {
-		return carId;
+	public String getUserId() {
+		return userId;
 	}
-	public void setCarId(String carId) {
-		this.carId = carId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public int getTreatInfo1() {
 		return treatInfo1;

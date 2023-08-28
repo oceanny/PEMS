@@ -2,6 +2,8 @@ package com.spring.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ChargeVO {
 
 	String charRecordNum;
@@ -59,6 +61,8 @@ public class ChargeVO {
 	public Date getCharTime() {
 		return charTime;
 	}
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	public void setCharTime(Date charTime) {
 		this.charTime = charTime;
 	}

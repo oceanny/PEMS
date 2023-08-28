@@ -53,7 +53,7 @@ public class CarController {
 		car.setPreSeat(car.getPreSeat());
 		car.setTreatInfo2(car.getTreatInfo2());
 		car.setTreatInfo3(car.getTreatInfo3());
-		car.setCarId(car.getCarId());
+		car.setUserId(car.getUserId());
 		
 		carService.regist(car);
 		
@@ -72,7 +72,7 @@ public class CarController {
 	
 	@PostMapping(value = "/modify", produces = "text/plain;charset=utf-8")
 	public ModelAndView modify(CarVO car, ModelAndView mnv) throws Exception {
-		String url = "redirect:/carinfo/list.do?carid=" + car.getCarId();
+		String url = "redirect:/carinfo/list.do?usercarid=" + car.getUserId	();
 		car.setCarNum(HTMLInputFilter.htmlSpecialChars(car.getCarNum()));
 		carService.modify(car);
 		mnv.setViewName(url);
