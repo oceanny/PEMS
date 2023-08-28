@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<typeAliases>
+	<typeAlias type="java.lang.String" alias="str" />
+	<typeAlias type="java.lang.Integer" alias="int" />
+	
+	<typeAlias type="com.spring.dto.MenuVO" alias="menu"/>
+	<typeAlias type="com.spring.dto.CCTVVO" alias="cctv"/>
+	<typeAlias type="com.spring.dto.CCTVAttachVO" alias="cctvattach"/>
+	<typeAlias type="com.spring.dto.CarVO" alias="car"/>
+	<typeAlias type="com.spring.dto.UserInfoVO" alias="userinfo"/>
+	<typeAlias type="com.spring.dto.UserVO" alias="user"/>
+	<typeAlias type="com.spring.dto.RecordVO" alias="record"/>
+	<typeAlias type="com.spring.dto.AbanVO" alias="aban"/>
+	<typeAlias type="com.spring.dto.ChargeVO" alias="charge"/>
+	<typeAlias type="com.spring.dto.AdminVO" alias="admin"/>
+	<typeAlias type="com.spring.dto.ManageTargetVO" alias="managetarget"/>
+	<typeAlias type="com.spring.dto.LightDataVO" alias="lightData"/>
+	<typeAlias type="com.spring.dto.AirconDataVO" alias="airconData"/>
+	<typeAlias type="com.spring.dto.FanDataVO" alias="fanData"/>
+	<typeAlias type="com.spring.dto.NoticeVO" alias="notice"/>
+
+</typeAliases>
+
+</configuration>
+
+
+
+

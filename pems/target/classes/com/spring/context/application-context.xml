@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- summernote Image Path -->
+	<bean id="imgPath" class="java.lang.String">
+		<constructor-arg value="${summernote.img}" />      
+	</bean>
+	
+	<!-- member.picture -->
+	<bean id="picturePath" class="java.lang.String">
+		<constructor-arg value="${member.picture.upload}" />      
+	</bean>
+	
+	<!-- file upload -->
+	<bean id="fileUploadPath" class="java.lang.String">
+		<constructor-arg value="${cctv.upload}"/>
+	</bean>
+	
+	<!-- login user log path -->
+	<bean id="loginUserLogSavePath" class="java.lang.String">
+		<constructor-arg value="${login.user.log}" />
+	</bean>
+
+	<bean id="errorLogPath" class="java.lang.String">
+		<constructor-arg value="${error.log}" />	
+	</bean>	
+	
+	<!-- Repository -->
+	<bean id="menuDAO" class="com.spring.dao.MenuDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="cctvDAO" class="com.spring.dao.CCTVDAOImpl"
+		 p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="cctvattachDAO" class="com.spring.dao.CCTVAttachDAOImpl"
+		p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="carDAO" class="com.spring.dao.CarDAOImpl"
+		 p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="userDAO" class="com.spring.dao.UserDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="recordDAO" class="com.spring.dao.RecordDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="abanDAO" class="com.spring.dao.AbanDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="chargeDAO" class="com.spring.dao.ChargeDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="userInfoDAO" class="com.spring.dao.UserInfoDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="adminDAO" class="com.spring.dao.AdminDAOImpl"
+	     p:sqlSession-ref="sqlSession" 
+	/>
+	<bean id="lightDataDAO" class="com.spring.dao.LightDataDAOImpl"
+		 p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="manageTargetDAO" class="com.spring.dao.ManageTargetDAOImpl"
+		 p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="airconDataDAO" class="com.spring.dao.AirconDataDAOImpl"
+		 p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="fanDataDAO" class="com.spring.dao.FanDataDAOImpl"
+		 p:sqlSession-ref="sqlSession"
+	/>
+	<bean id="noticeDAO" class="com.spring.dao.NoticeDAOImpl" 
+		 p:sqlSession-ref="sqlSession"
+	/>
+	
+	
+	<!-- Service -->
+	<bean id="menuService" class="com.spring.service.MenuServiceImpl"
+	     p:menuDAO-ref="menuDAO"
+	/>
+	<bean id="cctvService" class="com.spring.service.CCTVServiceImpl"
+	     p:cctvDAO-ref="cctvDAO"
+	     p:cctvattachDAO-ref="cctvattachDAO"
+	/>
+	<bean id="carService" class="com.spring.service.CarServiceImpl"
+		 p:carDAO-ref="carDAO"
+	/>
+	<bean id="userService" class="com.spring.service.UserServiceImpl"
+	     p:userDAO-ref="userDAO"
+	     p:carDAO-ref="carDAO"
+	     p:recordDAO-ref="recordDAO"
+	/>
+	<bean id="recordService" class="com.spring.service.RecordServiceImpl"
+	     p:recordDAO-ref="recordDAO"
+	/>
+	<bean id="abanService" class="com.spring.service.AbanServiceImpl"
+	     p:abanDAO-ref="abanDAO"
+	     p:carDAO-ref="carDAO"
+	     p:recordDAO-ref="recordDAO"
+	/>
+	<bean id="chargeService" class="com.spring.service.ChargeServiceImpl"
+	     p:chargeDAO-ref="chargeDAO"
+	/>
+	<bean id="userInfoService" class="com.spring.service.UserInfoServiceImpl"
+	     p:userInfoDAO-ref="userInfoDAO"
+	/>
+	<bean id="adminService" class="com.spring.service.AdminServiceImpl"
+	     p:adminDAO-ref="adminDAO"
+	/>
+	<bean id="lightDataService" class="com.spring.service.LightDataServiceImpl"
+	     p:lightDataDAO-ref="lightDataDAO"
+	/>
+	<bean id="manageTargetService" class="com.spring.service.ManageTargetServiceImpl"
+	     p:manageTargetDAO-ref="manageTargetDAO"
+	/>
+	<bean id="airconDataService" class="com.spring.service.AirconDataServiceImpl"
+	     p:airconDataDAO-ref="airconDataDAO"
+	/>
+	<bean id="fanDataService" class="com.spring.service.FanDataServiceImpl"
+	     p:fanDataDAO-ref="fanDataDAO"
+	/>
+	<bean id="noticeService" class="com.spring.service.NoticeServiceImpl" 
+		p:noticeDAO-ref="noticeDAO"
+	/>
+	
+</beans>

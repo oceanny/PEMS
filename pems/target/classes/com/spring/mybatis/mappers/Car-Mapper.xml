@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Car-Mapper">
+	
+	<sql id="search">
+		<if test="searchType == 'c'.toString()">
+			and carnum like '%'||#{keyword}||'%'			
+		</if>
+	</sql>
+	
+	<select id="selectSearchCarList" resultType="car">
+		select
+		*
+		from carinfo
+		where carnum is not null
+		<include refid="search" />
+		order by carnum asc							    
+	</select>
+	
+	<select id="selectUserCarList" resultType="car">
+		select
+		*
+		from carinfo
+		where carnum is not null AND userid=#{userid}
+		<include refid="search" />
+		order by carnum asc
+	</select>
+	
+	<select id="selectSearchCarListCount" resultType="int">
+		select
+		count(*)
+		from
+		carinfo
+		where carnum is not null  			  	
+		<include refid="search" />
+		order by carnum asc
+	</select>
+	
+	<select id="selectCarByCarNum" resultType="car">
+		select * 
+		from carinfo
+		where carnum=#{carnum}
+	</select>
+	
+	<select id="selectCarNumById" resultType="str">
+		select carnum
+		from carinfo
+		where carnum is not null AND userid=#{userid}
+	</select>
+	
+	<select id="selectIdByCarNum" resultType="str">
+		select userid
+		from carinfo
+		where carnum is not null AND carnum=#{carnum}
+	</select>
+	
+	<update id="insertCar" parameterType="car">
+		insert 
+		into 
+		carinfo(carnum,ctypenum,treatinfo1,treatinfo2,treatinfo3,lotcolor,areanum)
+		values
+		(#{carnum},#{ctypenum},#{treatinfo1},#{treatinfo2},#{treatinfo3},#{lotcolor},#{areanum})
+	</update>
+	
+	<update id="updateCar" parameterType="car">
+		update 
+		carinfo
+		set 
+		ctypenum=#{ctypenum}, treatinfo1=#{treatinfo1}, treatinfo2=#{treatinfo2}, treatinfo3=#{treatinfo3}, lotcolor=#{lotcolor}, areanum=#{areanum}
+		where carnum=#{carnum}
+	</update>
+	
+	<update id="deleteCar" parameterType="str">
+		delete 
+		from carinfo
+		where carnum=#{carnum}
+	</update>
+
+</mapper>
