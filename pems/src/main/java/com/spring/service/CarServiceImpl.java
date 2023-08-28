@@ -63,5 +63,11 @@ public class CarServiceImpl implements CarService {
 		
 	}
 
+	@Override
+	public CarVO getElectCar(String carNum) throws SQLException {
+		CarVO car = carDAO.selectElectByCarNum(carNum);
+		return car;
+	}
+
 
 }

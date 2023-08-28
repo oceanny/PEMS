@@ -12,8 +12,11 @@ public interface ChargeDAO {
 	int selectSearchCharRecordListCount(SearchListCommand command) throws SQLException;
 	
 	List<ChargeVO> selectUsingChar(SearchListCommand command) throws SQLException;
-	
+	ChargeVO selectUsingCar(String carNum) throws SQLException;
 	ChargeVO selectChargerByCharNum(String charNum) throws SQLException;
+	
+	ChargeVO selectRecentRecordNum() throws SQLException;
+	
 	void reserveCharger(ChargeVO charge) throws SQLException;
 	void updateCharger(ChargeVO charge) throws SQLException;
 }

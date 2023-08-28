@@ -5,8 +5,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,25 +102,53 @@ public class ChargeServiceImpl implements ChargeService {
 				}
 			}
 		}
+		List<String> firstEmpty = new ArrayList<>(emptyList);
+		List<String> secondEmpty = new ArrayList<>(emptyList);
+		List<String> firstRemove = new ArrayList<>();
+		List<String> secondRemove = new ArrayList<>();
+		
+		for (String f01 : firstEmpty) {
+            if (f01.contains("F02")) {
+                firstRemove.add(f01);
+            }
+        }
+		for (String f02 : secondEmpty) {
+			if (f02.contains("F01")) {
+				secondRemove.add(f02);
+			}
+		}
+
+        firstEmpty.removeAll(firstRemove);
+        secondEmpty.removeAll(secondRemove);
+		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("usingList", usingList);
 		dataMap.put("emptyList", emptyList);
+		dataMap.put("firstEmpty", firstEmpty);
+		dataMap.put("secondEmpty", secondEmpty);
 		
 		return dataMap;
 	}
 
-	private LocalDate lastReservationDate = null;
-    private int reservationCount = 0;
     
     @Override
-    public int getUpdatedReservationCount(LocalDate reservationDate) throws Exception{
-        if (lastReservationDate == null || reservationDate.isAfter(lastReservationDate)) {
-            lastReservationDate = reservationDate;
+    public String getRecentRecordNum() throws Exception{
+    	LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
+		String today = now.format(formatter);
+    	String lastReservationDate = chargeDAO.selectRecentRecordNum().getCharRecordNum().substring(0, 6);
+    	int reservationCount = Integer.parseInt(chargeDAO.selectRecentRecordNum().getCharRecordNum().substring(9));
+    	
+        if (Integer.parseInt(today) > Integer.parseInt(lastReservationDate)) {
+            lastReservationDate = today;
             reservationCount = 1;
         } else {
             reservationCount++;
         }
-        return reservationCount;
+        
+        String recordNum = lastReservationDate + String.format("%03d", reservationCount);;
+        
+        return recordNum;
     }
 	
 	@Override
@@ -133,5 +161,12 @@ public class ChargeServiceImpl implements ChargeService {
 		ChargeVO charge = chargeDAO.selectChargerByCharNum(charNum);
 		return charge;
 	}
+
+	@Override
+	public ChargeVO getUsingCar(String carNum) throws SQLException {
+		ChargeVO charge = chargeDAO.selectUsingCar(carNum);
+		return charge;
+	}
+
 
 }

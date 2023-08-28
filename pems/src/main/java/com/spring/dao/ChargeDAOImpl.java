@@ -54,4 +54,16 @@ public class ChargeDAOImpl implements ChargeDAO {
 		return charge;
 	}
 
+	@Override
+	public ChargeVO selectUsingCar(String carNum) throws SQLException {
+		ChargeVO charge = sqlSession.selectOne("Charge-Mapper.selectUsingCar", carNum);
+		return charge;
+	}
+
+	@Override
+	public ChargeVO selectRecentRecordNum() throws SQLException {
+		ChargeVO charge = sqlSession.selectOne("Charge-Mapper.selectRecentRecordNum");
+		return charge;
+	}
+
 }

@@ -69,7 +69,10 @@ public class CarDAOImpl implements CarDAO {
 		return userId;
 	}
 
-
-
+	@Override
+	public CarVO selectElectByCarNum(String carNum) throws SQLException {
+		CarVO car = sqlSession.selectOne("Car-Mapper.selectElectByCarNum", carNum);
+		return car;
+	}
 
 }
