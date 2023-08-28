@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LightData-Mapper">
+
+	<select id="selectLightDataBylDataNum" resultType="lightData">
+		select *
+		from lInternalData
+	    ORDER BY lDataNum DESC
+	    LIMIT 1
+	</select>
+	
+	<select id="insertLightData" resultType="lightData">
+		insert into
+		lInternalData(lDataNum, illum, lTime, lFloor)
+		values(#{lDataNum}, #{illum}, #{lTime}, #{lFloor})
+	</select>
+
+	<select id="selectLightDataSeqNext" resultType="int">
+		select lightData_seq.nextval as lDataNum from dual
+	</select>
+	
+</mapper>

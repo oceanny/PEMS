@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AirconData-Mapper">
+
+	<select id="selectAirconDataBylDataNum" resultType="airconData">
+		select *
+		from aInternalData
+	    ORDER BY aDataNum DESC
+	    LIMIT 1
+	</select>
+	
+	<select id="insertAirconData" resultType="airconData">
+		insert into
+		aInternalData(aDataNum, temp, hum, aTime, aFloor)
+		values(#{aDataNum}, #{temp}, #{hum}, #{aTime}, #{aFloor})
+	</select>
+
+	<select id="selectAirconDataSeqNext" resultType="int">
+		select airconData_seq.nextval as aDataNum from dual
+	</select>
+	
+</mapper>
